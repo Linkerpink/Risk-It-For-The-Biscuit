@@ -1,0 +1,15 @@
+[gd_scene load_steps=10 format=3 uid="uid://ohpuu2dnpckk"]
+
+[ext_resource type="Script" uid="uid://dgi42bjaqo4sr" path="res://scripts/HandManager.gd" id="1_b5kvl"]
+[ext_resource type="Script" uid="uid://do0f8o655qma5" path="res://scripts/Ingredient.gd" id="2_4q32y"]
+[ext_resource type="Resource" uid="uid://cdl53kfayv3nn" path="res://resources/sugar.tres" id="3_7184p"]
+[ext_resource type="Resource" uid="uid://bovsr5qxig6m0" path="res://resources/flour.tres" id="4_nxb2a"]
+[ext_resource type="Resource" uid="uid://buq84daep6t8o" path="res://resources/water.tres" id="5_8ltu0"]
+[ext_resource type="Resource" uid="uid://h7xw6ovc0gm" path="res://resources/salt.tres" id="6_riea7"]
+[ext_resource type="Resource" uid="uid://b8doy2loworol" path="res://resources/milk.tres" id="7_oo6ws"]
+[ext_resource type="Resource" uid="uid://dg7e0v71owcq4" path="res://resources/buttermilk.tres" id="8_8vrs2"]
+[ext_resource type="Resource" uid="uid://ba3ytxkqe1cpd" path="res://resources/butter.tres" id="9_hfn6g"]
+
+[node name="Hand Manager" type="Node2D"]
+script = ExtResource("1_b5kvl")
+unlocked_ingredients = Array[ExtResource("2_4q32y")]([ExtResource("3_7184p"), ExtResource("4_nxb2a"), ExtResource("5_8ltu0"), ExtResource("6_riea7"), ExtResource("7_oo6ws"), ExtResource("8_8vrs2"), ExtResource("9_hfn6g")])

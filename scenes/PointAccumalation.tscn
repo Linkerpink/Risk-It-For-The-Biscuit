@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqxgmla5uj3xq"]
+
+[ext_resource type="PackedScene" uid="uid://ohpuu2dnpckk" path="res://scenes/HandManager.tscn" id="1_qttiy"]
+
+[node name="Point Accumalation" type="Node2D"]
+
+[node name="Hand Manager" parent="." instance=ExtResource("1_qttiy")]

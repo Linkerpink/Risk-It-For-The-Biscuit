@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=2 format=3 uid="uid://h7xw6ovc0gm"]
+
+[ext_resource type="Script" uid="uid://do0f8o655qma5" path="res://scripts/Ingredient.gd" id="1_hlcbm"]
+
+[resource]
+script = ExtResource("1_hlcbm")
+biscuit_value = 10
+burn_value = 5.0
+metadata/_custom_type_script = "uid://do0f8o655qma5"

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cueckxn8d4ehr"]
+
+[ext_resource type="Script" uid="uid://chderuymi40vp" path="res://scripts/IngredientCard.gd" id="1_786kq"]
+[ext_resource type="Texture2D" uid="uid://ll0owsj61cdp" path="res://assets/Card Base Temp.png" id="1_o0muc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bt1ce"]
+size = Vector2(94, 146)
+
+[node name="Ingredient Card" type="Area2D"]
+script = ExtResource("1_786kq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bt1ce")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_o0muc")
