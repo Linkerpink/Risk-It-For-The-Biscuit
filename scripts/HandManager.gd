@@ -18,6 +18,10 @@ func _ready() -> void:
 	_get_ingredients()
 	_make_deck()
 	_make_hand()
+	
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_accept"):
+		get_tree().reload_current_scene()
 
 func _make_deck():
 	for i in 3: # Make sure every ingredient is added at least 3 times to the deck
@@ -39,17 +43,21 @@ func _make_deck():
 func _make_hand():
 	var _rnd = randi_range(3, 6)
 	for i in _rnd:
-		var _rnd_ingr = deck.get(randi_range(0, unlocked_ingredients.size()))
+		var _rnd_ingr = deck.get(randi_range(0, unlocked_ingredients.size() - 1))
 		hand.insert(hand.size(), _rnd_ingr)
 		
 		var card : IngredientCard = ingredient_card_scene.instantiate()
 		card.change_ingredient(_rnd_ingr)
+		card.position = Vector2(100 * i, 0)
+		var ingredient_text : RichTextLabel = card.get_child(2).get_child(0)
+		add_child(card)
+		ingredient_text.text = "[rainbow]" + str(card.ingredient_name)
 
 func _get_ingredients():
-	var sugar = unlocked_ingredients.get(0) 
-	var flour = unlocked_ingredients.get(1)
-	var water = unlocked_ingredients.get(2)
-	var salt = unlocked_ingredients.get(3) 
-	var milk = unlocked_ingredients.get(4)
-	var buttermilk = unlocked_ingredients.get(5)
-	var butter = unlocked_ingredients.get(6)
+	sugar = unlocked_ingredients.get(0) 
+	flour = unlocked_ingredients.get(1)
+	water = unlocked_ingredients.get(2)
+	salt = unlocked_ingredients.get(3) 
+	milk = unlocked_ingredients.get(4)
+	buttermilk = unlocked_ingredients.get(5)
+	butter = unlocked_ingredients.get(6)

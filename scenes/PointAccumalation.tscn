@@ -5,3 +5,6 @@
 [node name="Point Accumalation" type="Node2D"]
 
 [node name="Hand Manager" parent="." instance=ExtResource("1_qttiy")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)

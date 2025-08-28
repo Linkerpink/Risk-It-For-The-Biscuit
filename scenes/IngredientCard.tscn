@@ -15,3 +15,20 @@ shape = SubResource("RectangleShape2D_bt1ce")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_o0muc")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -31.0
+offset_top = -55.0
+offset_right = 31.0
+offset_bottom = 55.0
+
+[node name="Ingredient Text" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_right = 91.0
+offset_bottom = 141.0
+bbcode_enabled = true
+text = "[rainbow] "
+fit_content = true
+scroll_active = false
