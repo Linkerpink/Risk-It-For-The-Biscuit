@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ll0owsj61cdp" path="res://assets/Card Base Temp.png" id="1_o0muc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bt1ce"]
-size = Vector2(124, 184)
+size = Vector2(118, 184)
 
 [node name="Ingredient Card" type="Area2D"]
 script = ExtResource("1_786kq")

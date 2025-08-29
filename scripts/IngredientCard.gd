@@ -28,7 +28,6 @@ func _process(delta: float) -> void:
 				hand_manager.select_card(self)
 			else:
 				hand_manager.select_card(null)
-				
 	else:
 		var _scale = lerp(scale.x, initial_scale.x, lerp_speed * delta)
 		scale = Vector2(_scale, _scale)
