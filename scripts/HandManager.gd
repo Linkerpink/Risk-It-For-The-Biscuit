@@ -21,10 +21,6 @@ func _ready() -> void:
 	_get_ingredients()
 	_make_deck()
 	_make_hand()
-	
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_accept"):
-		get_tree().reload_current_scene()
 
 func _make_deck():
 	for i in 3: # Make sure every ingredient is added at least 3 times to the deck

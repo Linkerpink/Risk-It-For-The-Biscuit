@@ -12,7 +12,9 @@
 unique_name_in_owner = true
 
 [node name="Batch Manager" parent="." instance=ExtResource("2_b1bht")]
+unique_name_in_owner = true
 
 [node name="Hand Manager" parent="." instance=ExtResource("1_qttiy")]
+unique_name_in_owner = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
