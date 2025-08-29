@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://bu077p3vay2kx"]
+[gd_scene load_steps=2 format=3 uid="uid://bu077p3vay2kx"]
+
+[ext_resource type="Script" uid="uid://c26n50ectl26j" path="res://scripts/IngredientUI.gd" id="1_4s6a7"]
 
 [node name="Ingredient UI" type="Control"]
 layout_mode = 3
@@ -8,6 +10,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("1_4s6a7")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -49,3 +52,31 @@ mouse_filter = 2
 theme_override_constants/outline_size = 8
 bbcode_enabled = true
 text = "Burn Value: [shake][color=orange]35%"
+
+[node name="Check Oven Button" type="Button" parent="."]
+custom_minimum_size = Vector2(20, 100)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+offset_right = 210.0
+grow_vertical = 0
+text = "Check Oven"
+
+[node name="Add Ingredient Button" type="Button" parent="."]
+custom_minimum_size = Vector2(20, 100)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -210.0
+offset_top = -100.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Add Ingredient"
+
+[connection signal="pressed" from="Check Oven Button" to="." method="_on_check_oven_button_pressed"]
+[connection signal="pressed" from="Add Ingredient Button" to="." method="_on_add_ingredient_button_pressed"]

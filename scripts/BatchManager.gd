@@ -1,4 +1,5 @@
 extends Node2D
+class_name BatchManager
 
 var batch_biscuit_value : int = 0
 var batch_burn_value : float = 0
@@ -6,25 +7,20 @@ var batch_burn_value : float = 0
 @onready var biscuit_value_text : RichTextLabel = $"../CanvasLayer/Ingredient UI/MarginContainer/VBoxContainer/Biscuit Value Text"
 @onready var burn_value_text : RichTextLabel = $"../CanvasLayer/Ingredient UI/MarginContainer/VBoxContainer/Burn Value Text"
 
+var ingredients : Array[Ingredient] = []
+
 func _ready() -> void:
 	_change_biscuit_value_text()
 	_change_burn_value_text()
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("debug_add_biscuit_value"):
-		change_batch_biscuit_value(50)
-	
-	if Input.is_action_just_pressed("debug_remove_biscuit_value"):
-		change_batch_biscuit_value(-50)
-		
 	if Input.is_action_just_pressed("debug_toggle_biscuit_text"):
 		biscuit_value_text.show()
-		
-	if Input.is_action_just_pressed("left_click"):
-		change_batch_burn_value(-15)
 	
-	if Input.is_action_just_pressed("right_click"):
-		change_batch_burn_value(15)
+func add_ingredient(_ingredient : Ingredient):
+	ingredients.insert(ingredients.size(), _ingredient)
+	change_batch_biscuit_value(_ingredient.biscuit_value)
+	change_batch_burn_value(_ingredient.burn_value)
 
 #region Biscuits
 func change_batch_biscuit_value(_amount : int):

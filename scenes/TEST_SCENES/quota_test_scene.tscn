@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ch3hhsnf7igtn"]
 
-[ext_resource type="PackedScene" uid="uid://ca8eb30aj1tin" path="res://scenes/QuotaManager.tscn" id="1_wdg4q"]
+[ext_resource type="PackedScene" path="res://scenes/QuotaManager.tscn" id="1_wdg4q"]
 [ext_resource type="LabelSettings" uid="uid://bjb7xb1jdcfl" path="res://resources/LabelSettings/quotaLabel.tres" id="2_bums2"]
 
 [node name="QuotaTestScene" type="Node2D"]
