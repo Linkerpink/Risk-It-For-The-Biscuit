@@ -10,6 +10,6 @@
 [ext_resource type="Resource" uid="uid://dg7e0v71owcq4" path="res://resources/buttermilk.tres" id="8_8vrs2"]
 [ext_resource type="Resource" uid="uid://ba3ytxkqe1cpd" path="res://resources/butter.tres" id="9_hfn6g"]
 
-[node name="Hand Manager" type="Node2D"]
+[node name="Hand Manager" type="Node2D" groups=["hand_manager"]]
 script = ExtResource("1_b5kvl")
 unlocked_ingredients = Array[ExtResource("2_4q32y")]([ExtResource("3_7184p"), ExtResource("4_nxb2a"), ExtResource("5_8ltu0"), ExtResource("6_riea7"), ExtResource("7_oo6ws"), ExtResource("8_8vrs2"), ExtResource("9_hfn6g")])
