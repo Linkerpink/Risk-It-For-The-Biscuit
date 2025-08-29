@@ -11,14 +11,16 @@ quota_label = NodePath("../TESTUI/PanelContainer/VBoxContainer/HBoxContainer/Quo
 [node name="TESTUI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1278.0
+offset_bottom = 720.0
 
 [node name="PanelContainer" type="PanelContainer" parent="TESTUI"]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 28.825
-anchor_bottom = 16.225
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TESTUI/PanelContainer"]
 layout_mode = 2
@@ -47,16 +49,19 @@ label_settings = ExtResource("2_bums2")
 
 [node name="TESTnextround" type="Button" parent="TESTUI"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 23.0
-offset_top = 560.0
-offset_right = 93.0
-offset_bottom = 560.0
+anchors_preset = -1
+anchor_left = 0.0310845
+anchor_top = 0.858389
+anchor_right = 0.145254
+anchor_bottom = 0.941667
+offset_left = 0.273998
+offset_top = -0.0400391
+offset_right = 0.365997
+offset_bottom = -6.10352e-05
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 text = "NEXT QUOTA"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="TESTUI/TESTnextround" to="QuotaManager" method="_on_nextround_pressed"]
