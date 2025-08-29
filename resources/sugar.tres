@@ -6,4 +6,5 @@
 script = ExtResource("1_61hwc")
 biscuit_value = 10
 burn_value = 5.0
+name = "Sugar"
 metadata/_custom_type_script = "uid://do0f8o655qma5"
