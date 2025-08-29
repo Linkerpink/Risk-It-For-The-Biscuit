@@ -24,7 +24,7 @@ window/size/viewport_height=720
 
 folder_colors={
 "res://assets/": "red",
-"res://resources/": "purple",
+"res://resources/": "orange",
 "res://scenes/": "blue",
 "res://scripts/": "green"
 }
