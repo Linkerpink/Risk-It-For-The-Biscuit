@@ -24,15 +24,18 @@ func _process(delta: float) -> void:
 		scale = Vector2(_scale, _scale)
 		
 		if Input.is_action_just_pressed("left_click"):
-			if hand_manager.selected_card != self:
+			if not selected:
 				hand_manager.select_card(self)
+				selected = true
 			else:
-				hand_manager.select_card(null)
+				hand_manager.unselect_card(self)
+				selected = false
+			
 	else:
 		var _scale = lerp(scale.x, initial_scale.x, lerp_speed * delta)
 		scale = Vector2(_scale, _scale)
 		
-	if hand_manager.selected_card == self:
+	if selected:
 		position.y = lerp(position.y, initial_position.y - 16, lerp_speed * delta)
 	else:
 		position.y = lerp(position.y, initial_position.y, lerp_speed * delta)
@@ -46,3 +49,6 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	hovering = false
+
+func get_ingredient():
+	return ingredient

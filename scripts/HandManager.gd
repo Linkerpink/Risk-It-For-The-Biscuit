@@ -7,7 +7,7 @@ class_name HandManager
 @onready var ingredient_card_scene = preload("res://scenes/IngredientCard.tscn")
 @export var unlocked_ingredients : Array[Ingredient] = [] # 0: sugar 1: flour 2: water 3: salt 4: milk 5: buttermilk 6: butter
 
-var selected_card : IngredientCard
+var selected_cards : Array[IngredientCard]
 
 var sugar
 var flour
@@ -42,19 +42,32 @@ func _make_deck():
 func _make_hand():
 	var _rnd = randi_range(3, 6)
 	for i in _rnd:
-		var _rnd_ingr = deck.get(randi_range(0, unlocked_ingredients.size() - 1))
-		hand.insert(hand.size(), _rnd_ingr)
-		
-		var card : IngredientCard = ingredient_card_scene.instantiate() 
-		card.change_ingredient(_rnd_ingr)
-		card.position = Vector2(125 * i, 0)
-		var ingredient_text : RichTextLabel = card.get_child(2).get_child(0)
-		add_child(card)
-		ingredient_text.text = "[outline_size={8}] [font_size={16}]" + str(card.ingredient_name) + "\n\n[font_size={11}]biscuit value: [rainbow]" + str(card.ingredient.biscuit_value) + "\n[/rainbow]burn value: [rainbow]" + str(card.ingredient.burn_value)
+		add_card()
+
+func add_card():
+	var _rnd_ingr = deck.get(randi_range(0, unlocked_ingredients.size() - 1))
+	hand.insert(hand.size(), _rnd_ingr)
+	
+	var card : IngredientCard = ingredient_card_scene.instantiate() 
+	card.change_ingredient(_rnd_ingr)
+	var ingredient_text : RichTextLabel = card.get_child(2).get_child(0)
+	add_child(card)
+	ingredient_text.text = "[outline_size={8}] [font_size={16}]" + str(card.ingredient_name) + "\n\n[font_size={11}]biscuit value: [rainbow]" + str(card.ingredient.biscuit_value) + "\n[/rainbow]burn value: [rainbow]" + str(card.ingredient.burn_value)
+	card.position = Vector2(125 * hand.size(), 0)
+	print(hand)
+
+func remove_card(_card : IngredientCard):
+	hand.erase(_card)
+	_card.queue_free()
+	add_card()
 
 func select_card(_card : IngredientCard):
-	selected_card = _card
-	print("selected card " + str(_card))
+	selected_cards.insert(selected_cards.size(), _card)
+	print(selected_cards)
+	
+func unselect_card(_card : IngredientCard):
+	selected_cards.erase(_card)
+	print(selected_cards)
 
 func _get_ingredients():
 	sugar = unlocked_ingredients.get(0) 
