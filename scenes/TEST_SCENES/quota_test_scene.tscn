@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://ch3hhsnf7igtn"]
+
+[ext_resource type="PackedScene" uid="uid://ca8eb30aj1tin" path="res://scenes/QuotaManager.tscn" id="1_wdg4q"]
+[ext_resource type="LabelSettings" uid="uid://bjb7xb1jdcfl" path="res://resources/LabelSettings/quotaLabel.tres" id="2_bums2"]
+
+[node name="QuotaTestScene" type="Node2D"]
+
+[node name="QuotaManager" parent="." node_paths=PackedStringArray("quota_label") instance=ExtResource("1_wdg4q")]
+quota_label = NodePath("../TESTUI/PanelContainer/VBoxContainer/HBoxContainer/Quota")
+
+[node name="TESTUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PanelContainer" type="PanelContainer" parent="TESTUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 28.825
+anchor_bottom = 16.225
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TESTUI/PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TESTUI/PanelContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="CurrentAmount" type="Label" parent="TESTUI/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "6"
+label_settings = ExtResource("2_bums2")
+
+[node name="Divider" type="Label" parent="TESTUI/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "/"
+label_settings = ExtResource("2_bums2")
+
+[node name="Quota" type="Label" parent="TESTUI/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "7"
+label_settings = ExtResource("2_bums2")
+
+[node name="TESTnextround" type="Button" parent="TESTUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = 560.0
+offset_right = 93.0
+offset_bottom = 560.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "NEXT QUOTA"
+
+[connection signal="pressed" from="TESTUI/TESTnextround" to="QuotaManager" method="_on_nextround_pressed"]
