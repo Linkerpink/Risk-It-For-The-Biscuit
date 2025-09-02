@@ -67,16 +67,30 @@ text = "Check Oven"
 [node name="Add Ingredient Button" type="Button" parent="."]
 custom_minimum_size = Vector2(20, 100)
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -210.0
+offset_left = -105.0
 offset_top = -100.0
-grow_horizontal = 0
+offset_right = 105.0
+grow_horizontal = 2
 grow_vertical = 0
-text = "Add Ingredient"
+text = "Add Ingredients"
+
+[node name="Make Hand Button" type="Button" parent="."]
+custom_minimum_size = Vector2(20, 100)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -50.0
+offset_right = 210.0
+offset_bottom = 50.0
+grow_vertical = 2
+text = "Make Hand"
 
 [connection signal="pressed" from="Check Oven Button" to="." method="_on_check_oven_button_pressed"]
 [connection signal="pressed" from="Add Ingredient Button" to="." method="_on_add_ingredient_button_pressed"]
+[connection signal="pressed" from="Make Hand Button" to="." method="_on_make_hand_button_pressed"]

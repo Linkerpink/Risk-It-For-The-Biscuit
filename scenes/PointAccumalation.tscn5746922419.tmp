@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqxgmla5uj3xq"]
+[gd_scene load_steps=5 format=3 uid="uid://bqxgmla5uj3xq"]
 
 [ext_resource type="PackedScene" uid="uid://bu077p3vay2kx" path="res://scenes/ingredient_ui.tscn" id="1_b1bht"]
 [ext_resource type="PackedScene" uid="uid://ohpuu2dnpckk" path="res://scenes/HandManager.tscn" id="1_qttiy"]
 [ext_resource type="PackedScene" uid="uid://dvk3nv8m437rq" path="res://scenes/BatchManager.tscn" id="2_b1bht"]
 [ext_resource type="PackedScene" uid="uid://bgpr5uvwo770l" path="res://scenes/deck.tscn" id="4_6jf81"]
-[ext_resource type="PackedScene" uid="uid://dbwk52d63a24o" path="res://scenes/camera.tscn" id="5_siw3x"]
 
 [node name="Point Accumalation" type="Node2D"]
 
@@ -18,10 +17,9 @@ unique_name_in_owner = true
 
 [node name="Hand Manager" parent="." instance=ExtResource("1_qttiy")]
 unique_name_in_owner = true
-position = Vector2(-277, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Deck" parent="." instance=ExtResource("4_6jf81")]
 unique_name_in_owner = true
-position = Vector2(580, 273)
-
-[node name="Camera" parent="." instance=ExtResource("5_siw3x")]
+position = Vector2(568, 272)

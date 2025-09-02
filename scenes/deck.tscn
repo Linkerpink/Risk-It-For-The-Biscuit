@@ -1,0 +1,39 @@
+[gd_scene load_steps=12 format=3 uid="uid://bgpr5uvwo770l"]
+
+[ext_resource type="Script" uid="uid://da2ytyf468muj" path="res://scripts/Deck.gd" id="1_6rnap"]
+[ext_resource type="Texture2D" uid="uid://ll0owsj61cdp" path="res://assets/Card Base Temp.png" id="1_sdhao"]
+[ext_resource type="Script" uid="uid://do0f8o655qma5" path="res://scripts/Ingredient.gd" id="2_ve70f"]
+[ext_resource type="Resource" uid="uid://cdl53kfayv3nn" path="res://resources/sugar.tres" id="3_l6eyo"]
+[ext_resource type="Resource" uid="uid://bovsr5qxig6m0" path="res://resources/flour.tres" id="4_6mvcw"]
+[ext_resource type="Resource" uid="uid://buq84daep6t8o" path="res://resources/water.tres" id="5_2hlif"]
+[ext_resource type="Resource" uid="uid://h7xw6ovc0gm" path="res://resources/salt.tres" id="6_yecvj"]
+[ext_resource type="Resource" uid="uid://b8doy2loworol" path="res://resources/milk.tres" id="7_h13ue"]
+[ext_resource type="Resource" uid="uid://dg7e0v71owcq4" path="res://resources/buttermilk.tres" id="8_0k10f"]
+[ext_resource type="Resource" uid="uid://ba3ytxkqe1cpd" path="res://resources/butter.tres" id="9_qmlbr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6rnap"]
+size = Vector2(980, 1480)
+
+[node name="Deck" type="Area2D"]
+script = ExtResource("1_6rnap")
+unlocked_ingredients = Array[ExtResource("2_ve70f")]([ExtResource("3_l6eyo"), ExtResource("4_6mvcw"), ExtResource("5_2hlif"), ExtResource("6_yecvj"), ExtResource("7_h13ue"), ExtResource("8_0k10f"), ExtResource("9_qmlbr")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.1, 0.1)
+shape = SubResource("RectangleShape2D_6rnap")
+
+[node name="Card Sprite2" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, 6)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_sdhao")
+
+[node name="Card Sprite3" type="Sprite2D" parent="."]
+modulate = Color(0.498039, 0.498039, 0.498039, 1)
+position = Vector2(0, 3)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_sdhao")
+
+[node name="Card Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_sdhao")
