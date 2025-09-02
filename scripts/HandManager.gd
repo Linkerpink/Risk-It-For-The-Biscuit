@@ -1,79 +1,54 @@
 extends Node2D
 class_name HandManager
 
-@export var deck_size : int = 26
-@export var deck : Array[Ingredient] = [] #26
+@onready var deck = %Deck
+
 @export var hand : Array[IngredientCard] = []
 @onready var ingredient_card_scene = preload("res://scenes/IngredientCard.tscn")
-@export var unlocked_ingredients : Array[Ingredient] = [] # 0: sugar 1: flour 2: water 3: salt 4: milk 5: buttermilk 6: butter
 
 var selected_cards : Array[IngredientCard]
 
-var sugar
-var flour
-var water
-var salt
-var milk
-var buttermilk
-var butter
-
-func _ready() -> void:
-	_get_ingredients()
-	_make_deck()
-	_make_hand()
-
-func _make_deck():
-	for i in 3: # Make sure every ingredient is added at least 3 times to the deck
-		deck.insert(deck.size(), sugar)
-		deck.insert(deck.size(), flour)
-		deck.insert(deck.size(), water)
-		deck.insert(deck.size(), salt)
-		deck.insert(deck.size(), milk)
-		deck.insert(deck.size(), buttermilk)
-		deck.insert(deck.size(), butter)
-	
-	# Add the ones that need to be in the deck 4 times
-	deck.insert(deck.size(), sugar)
-	deck.insert(deck.size(), flour)
-	deck.insert(deck.size(), water)
-	deck.insert(deck.size(), salt)
-	deck.insert(deck.size(), milk)
-	
-func _make_hand():
-	var _rnd = randi_range(3, 6)
+func make_hand():
+	var _rnd = randi_range(6, 6)
 	for i in _rnd:
 		add_card()
 
 func add_card():
-	var _rnd_ingr = deck.get(randi_range(0, unlocked_ingredients.size() - 1))
-	hand.insert(hand.size(), _rnd_ingr)
+	var _rnd_ingr = deck.deck[randi_range(0, deck.unlocked_ingredients.size() - 1)]
 	
 	var card : IngredientCard = ingredient_card_scene.instantiate() 
 	card.change_ingredient(_rnd_ingr)
+
 	var ingredient_text : RichTextLabel = card.get_child(2).get_child(0)
+	ingredient_text.text = "[outline_size={8}] [font_size={16}]" + str(card.ingredient_name) + \
+		"\n\n[font_size={11}]biscuit value: [rainbow]" + str(card.ingredient.biscuit_value) + \
+		"\n[/rainbow]burn value: [rainbow]" + str(card.ingredient.burn_value)
+
 	add_child(card)
-	ingredient_text.text = "[outline_size={8}] [font_size={16}]" + str(card.ingredient_name) + "\n\n[font_size={11}]biscuit value: [rainbow]" + str(card.ingredient.biscuit_value) + "\n[/rainbow]burn value: [rainbow]" + str(card.ingredient.burn_value)
-	card.position = Vector2(125 * hand.size(), 0)
-	print(hand)
+	hand.append(card)
+
+	card.target_position = Vector2(125 * (hand.size() - 1), 0)
 
 func remove_card(_card : IngredientCard):
-	hand.erase(_card)
+	var _target_position = _card.target_position
+	
 	_card.queue_free()
-	add_card()
+	
+	var _rnd_ingr = deck.deck[randi_range(0, deck.unlocked_ingredients.size() - 1)]
+	var card : IngredientCard = ingredient_card_scene.instantiate() 
+	card.change_ingredient(_rnd_ingr)
+
+	var ingredient_text : RichTextLabel = card.get_child(2).get_child(0)
+	ingredient_text.text = "[outline_size={8}] [font_size={16}]" + str(card.ingredient_name) + \
+		"\n\n[font_size={11}]biscuit value: [rainbow]" + str(card.ingredient.biscuit_value) + \
+		"\n[/rainbow]burn value: [rainbow]" + str(card.ingredient.burn_value)
+
+	add_child(card)
+
+	card.target_position = _target_position
 
 func select_card(_card : IngredientCard):
 	selected_cards.insert(selected_cards.size(), _card)
-	print(selected_cards)
 	
 func unselect_card(_card : IngredientCard):
 	selected_cards.erase(_card)
-	print(selected_cards)
-
-func _get_ingredients():
-	sugar = unlocked_ingredients.get(0) 
-	flour = unlocked_ingredients.get(1)
-	water = unlocked_ingredients.get(2)
-	salt = unlocked_ingredients.get(3) 
-	milk = unlocked_ingredients.get(4)
-	buttermilk = unlocked_ingredients.get(5)
-	butter = unlocked_ingredients.get(6)

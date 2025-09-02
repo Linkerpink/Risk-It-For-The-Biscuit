@@ -20,6 +20,9 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("debug_toggle_biscuit_text"):
 		biscuit_value_text.show()
 	
+	if Input.is_action_just_pressed("debug_restart_scene"):
+		get_tree().reload_current_scene()
+	
 func add_ingredients():
 	for i : IngredientCard in hand_manager.selected_cards:
 		hand_manager.remove_card(i)
