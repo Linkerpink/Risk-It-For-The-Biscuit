@@ -11,6 +11,7 @@ var batch_burn_value : float = 0
 @onready var biscuit_value_text : RichTextLabel = $"../CanvasLayer/Ingredient UI/MarginContainer/Oven Sequence UI/VBoxContainer/Biscuit Value Text"
 @onready var burn_value_text_main : RichTextLabel = $"../CanvasLayer/Ingredient UI/MarginContainer/Main UI/VBoxContainer/Burn Value Text"
 @onready var burn_value_text_oven : RichTextLabel = $"../CanvasLayer/Ingredient UI/MarginContainer/Oven Sequence UI/VBoxContainer/Burn Value Text"
+@onready var round_end_message_text : RichTextLabel = $"../CanvasLayer/Ingredient UI/MarginContainer/Oven Sequence UI/VBoxContainer/Round End Message"
 @onready var reason_for_death_text : RichTextLabel = $"../CanvasLayer/Ingredient UI/MarginContainer/Game Over UI/VBoxContainer/Reason For Death Text"
 
 @onready var quota_manager = %QuotaManager
@@ -65,16 +66,17 @@ func _reset_batch():
 func _calculate_oven():
 	if batch_biscuit_value >= quota_manager.current_quota:
 		print("reached quota")
-		
 		var _rnd = randi_range(0,99)
-		
 		print(_rnd)
 		
+		oven_sequence_ui.show()
+		main_ui.hide()
+		
 		if _rnd < batch_burn_value:
-			_death_sequence("Batch got burned...")
+			print("batch got burned")
+			round_end_message_text.text = "[wave]Batch got [shake][color=red]burned.[/color][/shake] 5% less biscuits for the next round."
 		else:
-			oven_sequence_ui.show()
-			main_ui.hide()
+			round_end_message_text.text = "[wave]Batch baked [color=green]successfully."
 	else:
 		print("didn't reach quota")
 		_death_sequence("Didn't reach quota...")
@@ -99,7 +101,7 @@ func change_batch_biscuit_value(_amount : int):
 	_change_biscuit_value_text()
 
 func _change_biscuit_value_text():
-	biscuit_value_text.text = "Biscuit Value: " + _biscuit_text_effects() + str(batch_biscuit_value)
+	biscuit_value_text.text = "Biscuits baked: " + _biscuit_text_effects() + str(batch_biscuit_value)
 
 func _biscuit_text_effects():
 	var _text = ""
@@ -138,10 +140,10 @@ func change_batch_burn_value(_amount : float):
 	_change_burn_value_text_main()
 
 func _change_burn_value_text_main():
-	burn_value_text_main.text = "Burn Value: " + _burn_text_effects() + str(batch_burn_value) + "%"
+	burn_value_text_main.text = "Chance of burning: " + _burn_text_effects() + str(batch_burn_value) + "%"
 
 func _change_burn_value_text_oven():
-	burn_value_text_oven.text = "Burn Value: " + _burn_text_effects() + str(batch_burn_value) + "%"
+	burn_value_text_oven.text = "Chance of burning: " + _burn_text_effects() + str(batch_burn_value) + "%"
 
 func _burn_text_effects():
 	var _text = ""

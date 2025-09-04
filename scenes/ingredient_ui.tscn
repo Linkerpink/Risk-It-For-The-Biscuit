@@ -98,6 +98,7 @@ grow_vertical = 2
 text = "Make Hand"
 
 [node name="Oven Sequence UI" type="Control" parent="MarginContainer"]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 
@@ -117,6 +118,17 @@ bbcode_enabled = true
 text = "Batch:"
 fit_content = true
 scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Round End Message" type="RichTextLabel" parent="MarginContainer/Oven Sequence UI/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[wave]Cool message"
 horizontal_alignment = 1
 vertical_alignment = 1
 
