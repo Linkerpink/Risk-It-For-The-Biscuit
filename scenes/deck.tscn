@@ -14,7 +14,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6rnap"]
 size = Vector2(980, 1480)
 
-[node name="Deck" type="Area2D"]
+[node name="Deck" type="Area2D" groups=["deck"]]
 script = ExtResource("1_6rnap")
 unlocked_ingredients = Array[ExtResource("2_ve70f")]([ExtResource("3_l6eyo"), ExtResource("4_6mvcw"), ExtResource("5_2hlif"), ExtResource("6_yecvj"), ExtResource("7_h13ue"), ExtResource("8_0k10f"), ExtResource("9_qmlbr")])
 

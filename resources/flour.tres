@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_dprt8")
-biscuit_value = 10
+biscuit_value = 50
 burn_value = 5.0
 name = "Flour"
 metadata/_custom_type_script = "uid://do0f8o655qma5"

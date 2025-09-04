@@ -1,12 +1,15 @@
 extends Node2D
 class_name HandManager
 
-@onready var deck = %Deck
+var deck
 
 @export var hand : Array[IngredientCard] = []
 @onready var ingredient_card_scene = preload("res://scenes/IngredientCard.tscn")
 
 var selected_cards : Array[IngredientCard]
+
+func _ready() -> void:
+	deck = get_tree().get_first_node_in_group("deck")
 
 func make_hand():
 	var _rnd = randi_range(6, 6)
@@ -17,7 +20,6 @@ func destroy_hand():
 	for i : IngredientCard in hand:
 		i.queue_free()
 	hand.clear()
-	print(hand)
 	
 func add_card():
 	var _rnd_ingr = deck.deck[randi_range(0, deck.unlocked_ingredients.size() - 1)]
