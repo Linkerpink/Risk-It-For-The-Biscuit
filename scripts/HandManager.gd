@@ -12,7 +12,13 @@ func make_hand():
 	var _rnd = randi_range(6, 6)
 	for i in _rnd:
 		add_card()
-
+		
+func destroy_hand():
+	for i : IngredientCard in hand:
+		i.queue_free()
+	hand.clear()
+	print(hand)
+	
 func add_card():
 	var _rnd_ingr = deck.deck[randi_range(0, deck.unlocked_ingredients.size() - 1)]
 	
@@ -30,8 +36,11 @@ func add_card():
 	card.target_position = Vector2(125 * (hand.size() - 1), 0)
 
 func remove_card(_card : IngredientCard):
-	var _target_position = _card.target_position
+	if not is_instance_valid(_card):
+		return
 	
+	var _target_position = _card.target_position
+	hand.erase(_card)
 	_card.queue_free()
 	
 	var _rnd_ingr = deck.deck[randi_range(0, deck.unlocked_ingredients.size() - 1)]
@@ -44,8 +53,10 @@ func remove_card(_card : IngredientCard):
 		"\n[/rainbow]burn value: [rainbow]" + str(card.ingredient.burn_value)
 
 	add_child(card)
+	hand.append(card)
 
 	card.target_position = _target_position
+
 
 func select_card(_card : IngredientCard):
 	selected_cards.insert(selected_cards.size(), _card)

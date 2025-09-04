@@ -4,8 +4,13 @@ class_name BatchManager
 var batch_biscuit_value : int = 0
 var batch_burn_value : float = 0
 
-@onready var biscuit_value_text : RichTextLabel = $"../CanvasLayer/Ingredient UI/MarginContainer/VBoxContainer/Biscuit Value Text"
-@onready var burn_value_text : RichTextLabel = $"../CanvasLayer/Ingredient UI/MarginContainer/VBoxContainer/Burn Value Text"
+@onready var main_ui : Control = $"../CanvasLayer/Ingredient UI/MarginContainer/Main UI"
+@onready var oven_sequence_ui : Control = $"../CanvasLayer/Ingredient UI/MarginContainer/Oven Sequence UI"
+
+@onready var biscuit_value_text : RichTextLabel = $"../CanvasLayer/Ingredient UI/MarginContainer/Oven Sequence UI/VBoxContainer/Biscuit Value Text"
+@onready var burn_value_text_main : RichTextLabel = $"../CanvasLayer/Ingredient UI/MarginContainer/Main UI/VBoxContainer/Burn Value Text"
+@onready var burn_value_text_oven : RichTextLabel = $"../CanvasLayer/Ingredient UI/MarginContainer/Oven Sequence UI/VBoxContainer/Burn Value Text"
+
 var hand_manager : HandManager
 
 var ingredients : Array[Ingredient] = []
@@ -14,12 +19,11 @@ func _ready() -> void:
 	hand_manager = get_tree().get_first_node_in_group("hand_manager")
 	
 	_change_biscuit_value_text()
-	_change_burn_value_text()
+	_change_burn_value_text_main()
+	
+	start_normal_gameplay()
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("debug_toggle_biscuit_text"):
-		biscuit_value_text.show()
-	
 	if Input.is_action_just_pressed("debug_restart_scene"):
 		get_tree().reload_current_scene()
 	
@@ -35,6 +39,16 @@ func add_ingredients():
 	print(ingredients)
 	ingredients.clear()
 	hand_manager.selected_cards.clear()
+
+func start_oven_sequence():
+	oven_sequence_ui.show()
+	main_ui.hide()
+	hand_manager.destroy_hand()
+	_change_burn_value_text_oven()
+
+func start_normal_gameplay():
+	main_ui.show()
+	oven_sequence_ui.hide()
 
 #region Biscuits
 func change_batch_biscuit_value(_amount : int):
@@ -85,10 +99,13 @@ func change_batch_burn_value(_amount : float):
 	if (batch_burn_value < 0):
 		batch_burn_value = 0
 	
-	_change_burn_value_text()
+	_change_burn_value_text_main()
 
-func _change_burn_value_text():
-	burn_value_text.text = "Burn Value: " + _burn_text_effects() + str(batch_burn_value) + "%"
+func _change_burn_value_text_main():
+	burn_value_text_main.text = "Burn Value: " + _burn_text_effects() + str(batch_burn_value) + "%"
+
+func _change_burn_value_text_oven():
+	burn_value_text_oven.text = "Burn Value: " + _burn_text_effects() + str(batch_burn_value) + "%"
 
 func _burn_text_effects():
 	var _text = ""
