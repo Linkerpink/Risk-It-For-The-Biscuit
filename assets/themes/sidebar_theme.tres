@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://ctlqbv1pbu044"]
+
+[ext_resource type="FontFile" uid="uid://d13m5lo6ovwxt" path="res://assets/fonts/balatro.otf" id="1_jwmqk"]
+[ext_resource type="StyleBox" uid="uid://bfywj0ejvxkql" path="res://assets/styles/rounded_box.tres" id="1_rxpth"]
+
+[resource]
+PanelContainer/styles/panel = ExtResource("1_rxpth")
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0.28235295)
+RichTextLabel/constants/shadow_offset_x = 2
+RichTextLabel/constants/shadow_offset_y = 2
+RichTextLabel/fonts/normal_font = ExtResource("1_jwmqk")
