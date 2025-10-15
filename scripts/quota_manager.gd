@@ -14,7 +14,7 @@ var ante_round: int
 
 
 #TEST VARIABLES FOR TESTING PURPOSES
-@export var quota_label: Label 
+@export var quota_label: RichTextLabel 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,7 +24,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if round(quota_label.text.to_float()) != current_quota:
-		quota_label.text = str(current_quota)
+		quota_label.text = "Quota: " + str(current_quota)
 
 #TESTING 
 func _on_nextround_pressed() -> void:
